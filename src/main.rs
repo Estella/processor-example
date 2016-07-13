@@ -20,7 +20,7 @@ fn lookup_or_zero(hash: &mut HashMap<String, i64>, key: &str) -> i64 {
     }
 }
 
-fn apply_ruleset(connection: &redis::Connection, actors: &mut HashMap<String, repsheet_etl::Actor>) {
+fn apply_ruleset(connection: &redis::Connection, actors: &mut HashMap<String, repsheet_etl::actor::Actor>) {
     for (address, actor) in actors {
         if lookup_or_zero(&mut actor.responses, "404") > 10 {
             let _ = blacklist(connection, address, "404 violations");
@@ -37,7 +37,6 @@ fn apply_ruleset(connection: &redis::Connection, actors: &mut HashMap<String, re
         }
 
         if actor.invalid_request_count > 0 {
-            println!("Blacklisting {} due to invalid requests", address);
             let _ = blacklist(connection, address, "Invalid request");
         }
     }

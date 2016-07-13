@@ -5,8 +5,8 @@ authors = ["Aaron Bedra <aaron@aaronbedra.com>"]
 
 [dependencies]
 redis = "0.5.3"
-repsheet_etl = "0.0.3"
+repsheet_etl = "0.0.4"
 getopts = "0.2"
 
-#[dependencies.repsheet_etl]
-#path = "../repsheet_etl"
+# [dependencies.repsheet_etl]
+# path = "../repsheet_etl"
