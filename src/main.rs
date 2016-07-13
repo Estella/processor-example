@@ -35,6 +35,11 @@ fn apply_ruleset(connection: &redis::Connection, actors: &mut HashMap<String, re
         if posts > 0 || puts > 0 || deletes > 0 || heads > 0 || options > 0 {
             let _ = blacklist(connection, address, "Unallowed methods");
         }
+
+        if actor.invalid_request_count > 0 {
+            println!("Blacklisting {} due to invalid requests", address);
+            let _ = blacklist(connection, address, "Invalid request");
+        }
     }
 }
 
