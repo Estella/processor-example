@@ -1,0 +1,9 @@
+[package]
+name = "processor"
+version = "0.1.0"
+authors = ["Aaron Bedra <aaron@aaronbedra.com>"]
+
+[dependencies]
+redis = "0.5.3"
+repsheet_etl = "0.0.2"
+getopts = "0.2"
